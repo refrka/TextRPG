@@ -1,0 +1,264 @@
+[gd_scene format=3 uid="uid://clb702xdurd3f"]
+
+[ext_resource type="Script" uid="uid://0aunpk8a01ve" path="res://game_root.gd" id="1_bxsma"]
+[ext_resource type="Script" uid="uid://d1ouclxp8jtri" path="res://ui/nav_button.gd" id="1_xj5yv"]
+[ext_resource type="Resource" uid="uid://cakq5edwgmdp4" path="res://config_files/default_start.tres" id="2_lkrbl"]
+[ext_resource type="Script" uid="uid://bafyvg1bgh5mw" path="res://ui/character_screen.gd" id="2_pjpa4"]
+[ext_resource type="Script" uid="uid://8n4s3hsbccgt" path="res://ui/navigation_bar.gd" id="3_8gxew"]
+[ext_resource type="PackedScene" uid="uid://38r3lora4m4w" path="res://ui/linked_label.tscn" id="5_wd1uf"]
+[ext_resource type="Script" uid="uid://dxb3ig18hc2tx" path="res://ui/name_edit.gd" id="6_0o8ui"]
+[ext_resource type="Script" uid="uid://ceer4e8gvu3o1" path="res://ui/control_panel.gd" id="8_ledqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t68ju"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14150438, 0.14150438, 0.14150432, 1)
+corner_detail = 5
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_xj5yv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aajxx"]
+bg_color = Color(0.12938738, 0.12938738, 0.12938735, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24158394, 0.24158397, 0.24158394, 1)
+
+[node name="GameRoot" type="Node" unique_id=2073131627 node_paths=PackedStringArray("character_nav_button")]
+script = ExtResource("1_bxsma")
+character_nav_button = NodePath("GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/HBoxContainer/CharacterNavButton")
+game_start_config = ExtResource("2_lkrbl")
+
+[node name="BGCanvas" type="CanvasLayer" parent="." unique_id=928775690]
+
+[node name="BGRect" type="ColorRect" parent="BGCanvas" unique_id=2018395264 groups=["bg_rect"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.09, 0.09, 0.09, 1)
+
+[node name="GameCanvas" type="CanvasLayer" parent="." unique_id=85460548]
+
+[node name="Control" type="Control" parent="GameCanvas" unique_id=2112072669]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameCanvas/Control" unique_id=1171177871]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="GameCanvas/Control/MarginContainer" unique_id=408965476]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t68ju")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer" unique_id=680302609]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer" unique_id=51647920]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="NavigationBar" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1529186782 node_paths=PackedStringArray("nav_button_list", "season_label", "day_count_label", "day_section_label", "next_section_button") groups=["navigation_bar"]]
+layout_mode = 2
+script = ExtResource("3_8gxew")
+nav_button_list = NodePath("HBoxContainer/HBoxContainer")
+season_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/SeasonLabel")
+day_count_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/DayCountLabel")
+day_section_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/DaySectionLabel")
+next_section_button = NodePath("HBoxContainer/MarginContainer/HBoxContainer/NextSectionButton")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar" unique_id=2077123806]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer" unique_id=533618350]
+layout_mode = 2
+
+[node name="CharacterNavButton" type="Button" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/HBoxContainer" unique_id=476372730 node_paths=PackedStringArray("screen")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xj5yv")
+text = "Character"
+script = ExtResource("1_xj5yv")
+screen = NodePath("../../../../MarginContainer/CharacterScreen")
+metadata/_custom_type_script = "uid://d1ouclxp8jtri"
+
+[node name="WorldNavButton" type="Button" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/HBoxContainer" unique_id=1121874725 node_paths=PackedStringArray("screen")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_xj5yv")
+text = "World"
+script = ExtResource("1_xj5yv")
+screen = NodePath("../../../../MarginContainer/WorldScreen")
+metadata/_custom_type_script = "uid://d1ouclxp8jtri"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer" unique_id=119663574]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer" unique_id=1410472778]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="SeasonLabel" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1347083711]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spring"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=210196222]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DayCountLabel" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1577400461]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Day 1"
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1504820770]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DaySectionLabel" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1661750265]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MORNING"
+horizontal_alignment = 1
+
+[node name="NextSectionButton" type="Button" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NavigationBar/HBoxContainer/MarginContainer/HBoxContainer" unique_id=1711665711]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = ">"
+
+[node name="HSeparator" type="HSeparator" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1380659112]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=457156581]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CharacterScreen" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=482131002 node_paths=PackedStringArray("name_container", "name_label", "name_edit")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("2_pjpa4")
+name_container = NodePath("VBoxContainer/HBoxContainer/NameContainer")
+name_label = NodePath("VBoxContainer/HBoxContainer/NameContainer/LinkedLabel")
+name_edit = NodePath("VBoxContainer/HBoxContainer/NameContainer/NameEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CharacterScreen" unique_id=1769170838]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CharacterScreen/VBoxContainer" unique_id=613041862]
+layout_mode = 2
+
+[node name="NameContainer" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CharacterScreen/VBoxContainer/HBoxContainer" unique_id=62831643]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="LinkedLabel" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CharacterScreen/VBoxContainer/HBoxContainer/NameContainer" unique_id=1061524009 instance=ExtResource("5_wd1uf")]
+layout_mode = 2
+text = "Player Name"
+linked_property_id = &"player_name"
+
+[node name="NameEdit" type="LineEdit" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CharacterScreen/VBoxContainer/HBoxContainer/NameContainer" unique_id=451449749]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 2
+expand_to_text_length = true
+script = ExtResource("6_0o8ui")
+metadata/_custom_type_script = "uid://dxb3ig18hc2tx"
+
+[node name="WorldScreen" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=931031328]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen" unique_id=419940783]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer" unique_id=143772210]
+layout_mode = 2
+text = "World"
+
+[node name="ControlPanelCanvas" type="CanvasLayer" parent="." unique_id=117366216]
+
+[node name="ControlPanelRoot" type="Control" parent="ControlPanelCanvas" unique_id=918905979]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ControlPanel" type="MarginContainer" parent="ControlPanelCanvas/ControlPanelRoot" unique_id=200840129 groups=["control_panel"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("8_ledqy")
+
+[node name="PanelContainer" type="PanelContainer" parent="ControlPanelCanvas/ControlPanelRoot/ControlPanel" unique_id=429222557]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aajxx")
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlPanelCanvas/ControlPanelRoot/ControlPanel/PanelContainer" unique_id=1427367210]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4

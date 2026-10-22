@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dflc0xvpcccdx"]
+
+[ext_resource type="Script" uid="uid://y8xvyp7fej0j" path="res://ui/editable_label.gd" id="1_t0u2b"]
+
+[node name="EditableLabel" type="Label" unique_id=243312498 node_paths=PackedStringArray("line_edit")]
+offset_right = 40.0
+offset_bottom = 17.0
+script = ExtResource("1_t0u2b")
+line_edit = NodePath("LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=2091281399]
+layout_mode = 0
+offset_right = 36.8125
+offset_bottom = 25.0

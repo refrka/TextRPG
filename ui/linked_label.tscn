@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://38r3lora4m4w"]
+
+[ext_resource type="Script" uid="uid://d1y7gv5pn0j13" path="res://ui/linked_label.gd" id="1_ju2sl"]
+
+[node name="LinkedLabel" type="Label" unique_id=1061524009]
+offset_right = 40.0
+offset_bottom = 17.0
+script = ExtResource("1_ju2sl")

@@ -1,0 +1,57 @@
+[gd_resource type="Theme" format=3 uid="uid://d0gw2gydyjuw5"]
+
+[ext_resource type="FontFile" uid="uid://dmjqplrj1ufyq" path="res://resources/fonts/jetbrains/JetBrainsMonoNerdFontMono-Regular.ttf" id="1_mwhd1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nva1m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.18950242, 0.18950242, 0.18950242, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwhd1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.12125123, 0.12125123, 0.12125123, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pkyf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.18950242, 0.18950242, 0.18950242, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mwhd1"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+color = Color(0.14150438, 0.14150438, 0.14150432, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwhd1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wd1uf"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3815584, 0.38155845, 0.38155812, 1)
+
+[resource]
+default_font = ExtResource("1_mwhd1")
+default_font_size = 12
+Button/styles/hover = SubResource("StyleBoxFlat_nva1m")
+Button/styles/normal = SubResource("StyleBoxFlat_mwhd1")
+Button/styles/pressed = SubResource("StyleBoxFlat_2pkyf")
+HSeparator/styles/separator = SubResource("StyleBoxLine_mwhd1")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_mwhd1")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_wd1uf")

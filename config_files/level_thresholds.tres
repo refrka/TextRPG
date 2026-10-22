@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="LevelThresholds" format=3 uid="uid://dodornilwho4f"]
+
+[ext_resource type="Script" uid="uid://d0bbea21vyj7s" path="res://system/config/level_thresholds.gd" id="1_ey17r"]
+
+[resource]
+script = ExtResource("1_ey17r")
