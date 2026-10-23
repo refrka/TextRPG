@@ -1,6 +1,6 @@
 class_name Location extends Resource
 
 
-@export var location_id: StringName
+@export var region_id: WorldEnums.RegionID
 
 @export var display_name: String

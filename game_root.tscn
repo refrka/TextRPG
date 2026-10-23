@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://8n4s3hsbccgt" path="res://ui/navigation_bar.gd" id="3_8gxew"]
 [ext_resource type="PackedScene" uid="uid://38r3lora4m4w" path="res://ui/linked_label.tscn" id="5_wd1uf"]
 [ext_resource type="Script" uid="uid://dxb3ig18hc2tx" path="res://ui/name_edit.gd" id="6_0o8ui"]
-[ext_resource type="Script" uid="uid://ceer4e8gvu3o1" path="res://ui/control_panel.gd" id="8_ledqy"]
+[ext_resource type="Script" uid="uid://dnqfhrr61koyf" path="res://ui/world_screen.gd" id="8_6t5o2"]
+[ext_resource type="PackedScene" uid="uid://ym05m5a6o456" path="res://ui/control_panel.tscn" id="8_ledqy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t68ju"]
 content_margin_left = 0.0
@@ -24,14 +25,6 @@ border_color = Color(0.14150438, 0.14150438, 0.14150432, 1)
 corner_detail = 5
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_xj5yv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aajxx"]
-bg_color = Color(0.12938738, 0.12938738, 0.12938735, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.24158394, 0.24158397, 0.24158394, 1)
 
 [node name="GameRoot" type="Node" unique_id=2073131627 node_paths=PackedStringArray("character_nav_button")]
 script = ExtResource("1_bxsma")
@@ -91,10 +84,12 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="NavigationBar" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1529186782 node_paths=PackedStringArray("nav_button_list", "season_label", "day_count_label", "day_section_label", "next_section_button") groups=["navigation_bar"]]
+[node name="NavigationBar" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1529186782 node_paths=PackedStringArray("nav_button_list", "character_screen_button", "world_screen_button", "season_label", "day_count_label", "day_section_label", "next_section_button") groups=["navigation_bar"]]
 layout_mode = 2
 script = ExtResource("3_8gxew")
 nav_button_list = NodePath("HBoxContainer/HBoxContainer")
+character_screen_button = NodePath("HBoxContainer/HBoxContainer/CharacterNavButton")
+world_screen_button = NodePath("HBoxContainer/HBoxContainer/WorldNavButton")
 season_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/SeasonLabel")
 day_count_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/DayCountLabel")
 day_section_label = NodePath("HBoxContainer/MarginContainer/HBoxContainer/DaySectionLabel")
@@ -179,6 +174,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="CharacterScreen" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=482131002 node_paths=PackedStringArray("name_container", "name_label", "name_edit")]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("2_pjpa4")
@@ -209,16 +205,36 @@ expand_to_text_length = true
 script = ExtResource("6_0o8ui")
 metadata/_custom_type_script = "uid://dxb3ig18hc2tx"
 
-[node name="WorldScreen" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=931031328]
-visible = false
+[node name="WorldScreen" type="MarginContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=931031328 node_paths=PackedStringArray("region_label", "location_label")]
 layout_mode = 2
+script = ExtResource("8_6t5o2")
+region_label = NodePath("VBoxContainer/HBoxContainer/RegionLabel")
+location_label = NodePath("VBoxContainer/HBoxContainer2/LocationLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen" unique_id=419940783]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer" unique_id=143772210]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer" unique_id=281967105]
 layout_mode = 2
-text = "World"
+
+[node name="Label" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer/HBoxContainer" unique_id=143772210]
+layout_mode = 2
+text = "Region:"
+
+[node name="RegionLabel" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer/HBoxContainer" unique_id=1708887616]
+layout_mode = 2
+text = "(region)"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer" unique_id=1831263393]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer/HBoxContainer2" unique_id=649471584]
+layout_mode = 2
+text = "Location:"
+
+[node name="LocationLabel" type="Label" parent="GameCanvas/Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/WorldScreen/VBoxContainer/HBoxContainer2" unique_id=2018851022]
+layout_mode = 2
+text = "(location)"
 
 [node name="ControlPanelCanvas" type="CanvasLayer" parent="." unique_id=117366216]
 
@@ -231,34 +247,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ControlPanel" type="MarginContainer" parent="ControlPanelCanvas/ControlPanelRoot" unique_id=200840129 groups=["control_panel"]]
+[node name="ControlPanel" parent="ControlPanelCanvas/ControlPanelRoot" unique_id=535152964 instance=ExtResource("8_ledqy")]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -150.0
-offset_right = 300.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-script = ExtResource("8_ledqy")
-
-[node name="PanelContainer" type="PanelContainer" parent="ControlPanelCanvas/ControlPanelRoot/ControlPanel" unique_id=429222557]
-custom_minimum_size = Vector2(600, 300)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_aajxx")
-
-[node name="MarginContainer" type="MarginContainer" parent="ControlPanelCanvas/ControlPanelRoot/ControlPanel/PanelContainer" unique_id=1427367210]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4

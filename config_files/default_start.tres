@@ -1,20 +1,24 @@
 [gd_resource type="Resource" script_class="GameStartConfig" format=3 uid="uid://cakq5edwgmdp4"]
 
+[ext_resource type="Resource" uid="uid://dodornilwho4f" path="res://config_files/level_thresholds.tres" id="1_idn60"]
 [ext_resource type="Script" uid="uid://bekhx7jhrq3bh" path="res://system/config/game_start_config.gd" id="1_na72d"]
-[ext_resource type="Script" uid="uid://bx0wcci4holqy" path="res://system/character/character.gd" id="1_qcues"]
 [ext_resource type="Script" uid="uid://nhekrigyo20q" path="res://system/property/string_property.gd" id="1_vqix8"]
+[ext_resource type="Script" uid="uid://bb07st73f1ues" path="res://system/player/player.gd" id="2_vqix8"]
+[ext_resource type="Resource" uid="uid://cdpm0u3j6mmio" path="res://resources/objects/regions/forest_region.tres" id="5_exchs"]
 
-[sub_resource type="Resource" id="Resource_wd1uf"]
+[sub_resource type="Resource" id="Resource_idn60"]
 script = ExtResource("1_vqix8")
 property_id = &"player_name"
-value = "Bitwit"
+value = "Player"
 metadata/_custom_type_script = "uid://nhekrigyo20q"
 
-[sub_resource type="Resource" id="Resource_vqix8"]
-script = ExtResource("1_qcues")
-name = SubResource("Resource_wd1uf")
-metadata/_custom_type_script = "uid://bx0wcci4holqy"
+[sub_resource type="Resource" id="Resource_10pqs"]
+script = ExtResource("2_vqix8")
+name = SubResource("Resource_idn60")
+metadata/_custom_type_script = "uid://bb07st73f1ues"
 
 [resource]
 script = ExtResource("1_na72d")
-player_template = SubResource("Resource_vqix8")
+player_template = SubResource("Resource_10pqs")
+level_thresholds = ExtResource("1_idn60")
+starting_location = ExtResource("5_exchs")

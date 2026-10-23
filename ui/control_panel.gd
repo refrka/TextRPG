@@ -1,6 +1,8 @@
 class_name ControlPanel extends MarginContainer
 
 
+@export var fire_event_button: Button
+
 
 
 var held:= false

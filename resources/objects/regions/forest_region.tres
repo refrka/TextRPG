@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Region" format=3 uid="uid://cdpm0u3j6mmio"]
+
+[ext_resource type="Script" uid="uid://d161s7t2kual1" path="res://system/location/region.gd" id="1_wycij"]
+
+[resource]
+script = ExtResource("1_wycij")
+display_name = "Forest"

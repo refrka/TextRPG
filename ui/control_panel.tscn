@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ym05m5a6o456"]
+
+[ext_resource type="Script" uid="uid://ceer4e8gvu3o1" path="res://ui/control_panel.gd" id="1_t8mf3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aajxx"]
+bg_color = Color(0.12938738, 0.12938738, 0.12938735, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24158394, 0.24158397, 0.24158394, 1)
+
+[node name="ControlPanel" type="MarginContainer" unique_id=535152964 groups=["control_panel"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_t8mf3")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1012125806]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aajxx")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=340892804]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2140617713]
+layout_mode = 2
+
+[node name="FireEventButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1684564530]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+text = "Fire Event"
